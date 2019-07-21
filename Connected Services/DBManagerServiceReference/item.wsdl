@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="Delta.DeltaDBManager" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Delta.DeltaDBManager" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="Delta.DeltaDBManager/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd0" namespace="Delta.DeltaDBManager" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.BookingNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DBManagerInterface_BookCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookCar" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_BookCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBooking" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBooking" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetBookingByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingByID" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetBookingByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCar" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCar" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetCars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCars" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetCars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCar" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetAvailableCars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCars" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetAvailableCars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReport" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReport" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetReportByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportByID" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetReportByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetReportsForCar_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportsForCar" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetReportsForCar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportsForCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUserByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByEmail" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUserByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddService_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddService" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteService_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteService" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateService_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateService" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DBManagerInterface">
+    <wsdl:operation name="BookCar">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/BookCar" message="tns:DBManagerInterface_BookCar_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/BookCarResponse" message="tns:DBManagerInterface_BookCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBooking" message="tns:DBManagerInterface_DeleteBooking_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBookingResponse" message="tns:DBManagerInterface_DeleteBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBooking">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBooking" message="tns:DBManagerInterface_UpdateBooking_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBookingResponse" message="tns:DBManagerInterface_UpdateBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingByID">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByID" message="tns:DBManagerInterface_GetBookingByID_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByIDResponse" message="tns:DBManagerInterface_GetBookingByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCar">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddCar" message="tns:DBManagerInterface_AddCar_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddCarResponse" message="tns:DBManagerInterface_AddCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCar">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCar" message="tns:DBManagerInterface_DeleteCar_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCarResponse" message="tns:DBManagerInterface_DeleteCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCars">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetCars" message="tns:DBManagerInterface_GetCars_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetCarsResponse" message="tns:DBManagerInterface_GetCars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCar">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCar" message="tns:DBManagerInterface_UpdateCar_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCarResponse" message="tns:DBManagerInterface_UpdateCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableCars">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCars" message="tns:DBManagerInterface_GetAvailableCars_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCarsResponse" message="tns:DBManagerInterface_GetAvailableCars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReport">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddReport" message="tns:DBManagerInterface_AddReport_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddReportResponse" message="tns:DBManagerInterface_AddReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReport">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReport" message="tns:DBManagerInterface_DeleteReport_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReportResponse" message="tns:DBManagerInterface_DeleteReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportByID">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportByID" message="tns:DBManagerInterface_GetReportByID_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportByIDResponse" message="tns:DBManagerInterface_GetReportByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportsForCar">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCar" message="tns:DBManagerInterface_GetReportsForCar_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarResponse" message="tns:DBManagerInterface_GetReportsForCar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByEmail">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmail" message="tns:DBManagerInterface_GetUserByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailResponse" message="tns:DBManagerInterface_GetUserByEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddUser" message="tns:DBManagerInterface_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddUserResponse" message="tns:DBManagerInterface_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUser" message="tns:DBManagerInterface_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUserResponse" message="tns:DBManagerInterface_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUsers" message="tns:DBManagerInterface_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersResponse" message="tns:DBManagerInterface_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddService">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddService" message="tns:DBManagerInterface_AddService_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddServiceResponse" message="tns:DBManagerInterface_AddService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteService">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteService" message="tns:DBManagerInterface_DeleteService_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceResponse" message="tns:DBManagerInterface_DeleteService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateService" message="tns:DBManagerInterface_UpdateService_InputMessage" />
+      <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceResponse" message="tns:DBManagerInterface_UpdateService_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
