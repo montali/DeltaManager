@@ -24,11 +24,12 @@
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="92158a34-027a-489b-b346-f6c9323ca384" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?disco" />
     <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="eef11b74-1ca1-49e8-9ae5-22604125670a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?wsdl=wsdl0" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="9ef6181e-07b0-48fe-9132-a7f5b13e1dca" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd4" />
+    <MetadataFile FileName="item7.xsd" MetadataType="Schema" ID="37d47543-bb89-4577-91a5-bbcc924d89db" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd7" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="8d084fc2-65f2-42e7-91c2-d8c357d0abde" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd3" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3febd91e-4e64-459b-902a-7ed24df4de09" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd1" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="809d1917-b969-42cf-b596-28f3717f7daf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" />
-    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="19fb43ed-00c7-44ed-af4a-da91548f7ba8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd0" />
     <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="eb2a1a1c-a402-497a-ae1b-c14b60940b1e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="19fb43ed-00c7-44ed-af4a-da91548f7ba8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd0" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="809d1917-b969-42cf-b596-28f3717f7daf" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" />
     <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="12ac9281-c485-4a29-99db-aac585ae17b3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd2" />
     <MetadataFile FileName="DBManager.wsdl" MetadataType="Wsdl" ID="2c652ce5-f3b1-4a06-8f2d-b1f38a9c4129" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?wsdl" />
   </Metadata>

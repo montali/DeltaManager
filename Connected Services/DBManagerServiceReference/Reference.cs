@@ -406,6 +406,51 @@ namespace DeltaManager.DBManagerServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+    [System.SerializableAttribute()]
+    public partial class DatabaseFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Report", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS")]
     [System.SerializableAttribute()]
     public partial class Report : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -595,63 +640,82 @@ namespace DeltaManager.DBManagerServiceReference {
     public interface DBManagerInterface {
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/BookCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/BookCarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/BookCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool BookCar(DeltaManager.DBManagerServiceReference.Booking booking);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBooking", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteBookingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBookingDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteBooking(DeltaManager.DBManagerServiceReference.Booking booking);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBooking", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateBookingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBookingDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool UpdateBooking(DeltaManager.DBManagerServiceReference.Booking NewBooking);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByID", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetBookingByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByIDDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.Booking GetBookingByID(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddCarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddCar(DeltaManager.DBManagerServiceReference.Car car);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteCarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteCar(DeltaManager.DBManagerServiceReference.Car car);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetCars", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetCarsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetCarsDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.Car[] GetCars();
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateCarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool UpdateCar(DeltaManager.DBManagerServiceReference.Car updatableCar);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCars", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCarsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCarsDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.Car[] GetAvailableCars(System.DateTime Start, System.DateTime End);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddReport", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddReportDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddReport(DeltaManager.DBManagerServiceReference.Report report);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReport", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReportDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteReport(DeltaManager.DBManagerServiceReference.Report report);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetReportByID", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetReportByIDResponse")]
         DeltaManager.DBManagerServiceReference.Report GetReportByID(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.Report[] GetReportsForCar(DeltaManager.DBManagerServiceReference.Car car);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmail", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.User GetUserByEmail(string Email);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddUser", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddUserDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddUser(DeltaManager.DBManagerServiceReference.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUser", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUserDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteUser(DeltaManager.DBManagerServiceReference.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetUsers", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetUsersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.User[] GetUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddServiceResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddService(DeltaManager.DBManagerServiceReference.Service service);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteService(DeltaManager.DBManagerServiceReference.Service service);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool UpdateService(DeltaManager.DBManagerServiceReference.Service service);
     }
     

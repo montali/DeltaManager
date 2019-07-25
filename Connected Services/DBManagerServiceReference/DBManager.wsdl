@@ -12,6 +12,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteBooking">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteBooking" style="document" />
@@ -21,6 +24,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateBooking">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/UpdateBooking" style="document" />
@@ -30,6 +36,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetBookingByID">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetBookingByID" style="document" />
@@ -39,6 +48,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddCar">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/AddCar" style="document" />
@@ -48,6 +60,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteCar">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteCar" style="document" />
@@ -57,6 +72,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCars">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetCars" style="document" />
@@ -66,6 +84,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateCar">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/UpdateCar" style="document" />
@@ -75,6 +96,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetAvailableCars">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCars" style="document" />
@@ -84,6 +108,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddReport">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/AddReport" style="document" />
@@ -93,6 +120,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteReport">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteReport" style="document" />
@@ -102,6 +132,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetReportByID">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetReportByID" style="document" />
@@ -120,6 +153,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserByEmail">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmail" style="document" />
@@ -129,6 +165,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/AddUser" style="document" />
@@ -138,6 +177,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteUser" style="document" />
@@ -147,6 +189,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetUsers" style="document" />
@@ -156,6 +201,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="AddService">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/AddService" style="document" />
@@ -165,6 +213,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteService">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteService" style="document" />
@@ -174,6 +225,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateService">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/UpdateService" style="document" />
@@ -183,6 +237,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="DBManager">

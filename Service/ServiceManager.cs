@@ -10,15 +10,18 @@ using System.Text;
 
 namespace Delta.DeltaManager.ServiceNS
 {
-    class ServiceManager
+    class ServiceManager : IServiceManager
     {
-
-
-        public bool addCarService(Service ServiceDone, Hashtable Authorization)
+        private DBManagerInterfaceClient DBManager;
+        public ServiceManager()
+        {
+            DBManager = new DBManagerInterfaceClient();
+        }
+        public bool addCarService(Service ServiceDone, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -27,11 +30,11 @@ namespace Delta.DeltaManager.ServiceNS
            return true;// return DBManager.addCarService(ServiceDone);
         }
 
-        public ArrayList GetCarServicesForCar(Car ServicedCar, Hashtable Authorization)
+        public ArrayList GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {

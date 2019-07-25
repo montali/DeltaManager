@@ -5,7 +5,7 @@ using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
 
 namespace Delta.DeltaManager.CarNS {
-    public class CarManager
+    public class CarManager : ICarManager
     {
         private DBManagerInterfaceClient DBManager;
         public CarManager()
@@ -13,12 +13,12 @@ namespace Delta.DeltaManager.CarNS {
             this.DBManager = new DBManagerInterfaceClient();
         }
 
-        public bool AddCar(Car car, Hashtable Authorization)
+        public bool AddCar(Car car, string Email, string MD5PassHash)
         {
 
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -27,11 +27,11 @@ namespace Delta.DeltaManager.CarNS {
             return this.DBManager.AddCar(car);
         }
 
-        public bool DeleteCar(Car car, Hashtable Authorization)
+        public bool DeleteCar(Car car, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -40,11 +40,11 @@ namespace Delta.DeltaManager.CarNS {
            return DBManager.DeleteCar(car);
         }
 
-        public List<Car> GetCars (Hashtable Authorization)
+        public List<Car> GetCars (string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -53,11 +53,11 @@ namespace Delta.DeltaManager.CarNS {
            return new List<Car>(DBManager.GetCars());
         }
 
-        public bool UpdateCar (Car UpdatableCar, Hashtable Authorization)
+        public bool UpdateCar (Car UpdatableCar, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -66,11 +66,11 @@ namespace Delta.DeltaManager.CarNS {
            return DBManager.UpdateCar(UpdatableCar);
         }
 
-        public List<Car> GetAvailableCars(DateTime Start, DateTime End, Hashtable Authorization)
+        public List<Car> GetAvailableCars(DateTime Start, DateTime End, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {

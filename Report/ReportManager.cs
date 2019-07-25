@@ -9,17 +9,18 @@ namespace Delta.DeltaManager.ReportNS
 {
 
 
-    public class ReportManager
+    public class ReportManager : IReportManager
     {
+        DBManagerInterfaceClient DBManager;
         public ReportManager()
         {
-
+            DBManager = new DBManagerInterfaceClient();
         }
-        public bool AddReport (Report report, Hashtable Authorization)
+        public bool AddReport (Report report, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -28,11 +29,11 @@ namespace Delta.DeltaManager.ReportNS
            return true;// return DBManager.AddReport(report);
         }
 
-        public ArrayList retrieveReportsForCar (Car car, Hashtable Authorization)
+        public ArrayList retrieveReportsForCar (Car car, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {

@@ -3,12 +3,13 @@
   <wsdl:types>
     <xsd:schema targetNamespace="Delta.DeltaDBManager/Imports">
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd0" namespace="Delta.DeltaDBManager" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.BookingNS" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" />
-      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="DBManagerInterface_BookCar_InputMessage">
@@ -17,11 +18,17 @@
   <wsdl:message name="DBManagerInterface_BookCar_OutputMessage">
     <wsdl:part name="parameters" element="tns:BookCarResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_BookCar_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q1:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteBooking_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBooking" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteBooking_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q2:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_UpdateBooking_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateBooking" />
@@ -29,11 +36,17 @@
   <wsdl:message name="DBManagerInterface_UpdateBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateBookingResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateBooking_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q3:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetBookingByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBookingByID" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetBookingByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBookingByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetBookingByID_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q4:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddCar_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCar" />
@@ -41,11 +54,17 @@
   <wsdl:message name="DBManagerInterface_AddCar_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCarResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddCar_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q5:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteCar_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCar" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteCar_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteCar_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q6:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetCars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCars" />
@@ -53,11 +72,17 @@
   <wsdl:message name="DBManagerInterface_GetCars_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCarsResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetCars_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q7:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_UpdateCar_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCar" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_UpdateCar_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateCar_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q8:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetAvailableCars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAvailableCars" />
@@ -65,17 +90,26 @@
   <wsdl:message name="DBManagerInterface_GetAvailableCars_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAvailableCarsResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetAvailableCars_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q9:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddReport_InputMessage">
     <wsdl:part name="parameters" element="tns:AddReport" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddReport_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddReportResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddReport_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q10:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteReport_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteReport" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteReport_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteReport_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q11:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetReportByID_InputMessage">
     <wsdl:part name="parameters" element="tns:GetReportByID" />
@@ -89,11 +123,17 @@
   <wsdl:message name="DBManagerInterface_GetReportsForCar_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetReportsForCarResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetReportsForCar_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q12:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetUserByEmail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserByEmail" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetUserByEmail_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUserByEmail_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q13:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
@@ -101,11 +141,17 @@
   <wsdl:message name="DBManagerInterface_AddUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddUser_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q14:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteUser_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUser" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteUser_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q15:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
@@ -113,11 +159,17 @@
   <wsdl:message name="DBManagerInterface_GetUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_GetUsers_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q16:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddService_InputMessage">
     <wsdl:part name="parameters" element="tns:AddService" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_AddService_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBManagerInterface_AddService_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q17:DatabaseFault" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_DeleteService_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteService" />
@@ -125,56 +177,73 @@
   <wsdl:message name="DBManagerInterface_DeleteService_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_DeleteService_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q18:DatabaseFault" />
+  </wsdl:message>
   <wsdl:message name="DBManagerInterface_UpdateService_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateService" />
   </wsdl:message>
   <wsdl:message name="DBManagerInterface_UpdateService_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="DBManagerInterface_UpdateService_DatabaseFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager" name="detail" element="q19:DatabaseFault" />
+  </wsdl:message>
   <wsdl:portType name="DBManagerInterface">
     <wsdl:operation name="BookCar">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/BookCar" message="tns:DBManagerInterface_BookCar_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/BookCarResponse" message="tns:DBManagerInterface_BookCar_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/BookCarDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_BookCar_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteBooking">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBooking" message="tns:DBManagerInterface_DeleteBooking_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBookingResponse" message="tns:DBManagerInterface_DeleteBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteBookingDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_DeleteBooking_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateBooking">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBooking" message="tns:DBManagerInterface_UpdateBooking_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBookingResponse" message="tns:DBManagerInterface_UpdateBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateBookingDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_UpdateBooking_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBookingByID">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByID" message="tns:DBManagerInterface_GetBookingByID_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByIDResponse" message="tns:DBManagerInterface_GetBookingByID_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingByIDDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetBookingByID_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddCar">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddCar" message="tns:DBManagerInterface_AddCar_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddCarResponse" message="tns:DBManagerInterface_AddCar_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddCarDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_AddCar_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteCar">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCar" message="tns:DBManagerInterface_DeleteCar_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCarResponse" message="tns:DBManagerInterface_DeleteCar_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCarDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_DeleteCar_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCars">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetCars" message="tns:DBManagerInterface_GetCars_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetCarsResponse" message="tns:DBManagerInterface_GetCars_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetCarsDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetCars_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateCar">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCar" message="tns:DBManagerInterface_UpdateCar_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCarResponse" message="tns:DBManagerInterface_UpdateCar_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateCarDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_UpdateCar_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAvailableCars">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCars" message="tns:DBManagerInterface_GetAvailableCars_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCarsResponse" message="tns:DBManagerInterface_GetAvailableCars_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetAvailableCarsDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetAvailableCars_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddReport">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddReport" message="tns:DBManagerInterface_AddReport_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddReportResponse" message="tns:DBManagerInterface_AddReport_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddReportDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_AddReport_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteReport">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReport" message="tns:DBManagerInterface_DeleteReport_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReportResponse" message="tns:DBManagerInterface_DeleteReport_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReportDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_DeleteReport_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetReportByID">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportByID" message="tns:DBManagerInterface_GetReportByID_InputMessage" />
@@ -183,34 +252,42 @@
     <wsdl:operation name="GetReportsForCar">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCar" message="tns:DBManagerInterface_GetReportsForCar_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarResponse" message="tns:DBManagerInterface_GetReportsForCar_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetReportsForCar_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserByEmail">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmail" message="tns:DBManagerInterface_GetUserByEmail_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailResponse" message="tns:DBManagerInterface_GetUserByEmail_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetUserByEmail_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddUser" message="tns:DBManagerInterface_AddUser_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddUserResponse" message="tns:DBManagerInterface_AddUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddUserDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_AddUser_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUser" message="tns:DBManagerInterface_DeleteUser_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUserResponse" message="tns:DBManagerInterface_DeleteUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUserDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_DeleteUser_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUsers" message="tns:DBManagerInterface_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersResponse" message="tns:DBManagerInterface_GetUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_GetUsers_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddService">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddService" message="tns:DBManagerInterface_AddService_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddServiceResponse" message="tns:DBManagerInterface_AddService_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/AddServiceDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_AddService_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteService">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteService" message="tns:DBManagerInterface_DeleteService_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceResponse" message="tns:DBManagerInterface_DeleteService_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_DeleteService_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateService">
       <wsdl:input wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateService" message="tns:DBManagerInterface_UpdateService_InputMessage" />
       <wsdl:output wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceResponse" message="tns:DBManagerInterface_UpdateService_OutputMessage" />
+      <wsdl:fault wsaw:Action="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceDatabaseFaultFault" name="DatabaseFaultFault" message="tns:DBManagerInterface_UpdateService_DatabaseFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

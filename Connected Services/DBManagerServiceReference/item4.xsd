@@ -2,9 +2,9 @@
 <xs:schema xmlns:tns="Delta.DeltaDBManager" elementFormDefault="qualified" targetNamespace="Delta.DeltaDBManager" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.BookingNS" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" />
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" />
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/Delta.DeltaDBManager/DBManager/?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" />
   <xs:element name="BookCar">
     <xs:complexType>
       <xs:sequence>

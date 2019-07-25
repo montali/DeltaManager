@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections;
+using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
 
 
 namespace Delta.DeltaManager.BookingNS
 {
-    public class BookingManager
+    public class BookingManager : IBookingManager
     {
+        private DBManagerInterfaceClient DBManager;
+
         public BookingManager()
         {
+            DBManager = new DBManagerInterfaceClient();
         }
-        public bool BookCar (Car BookedCar, DateTime Start, DateTime End, Hashtable Authorization)
+        public bool BookCar (Car BookedCar, DateTime Start, DateTime End, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -24,11 +28,11 @@ namespace Delta.DeltaManager.BookingNS
            return true;// return DBManager.BookCar(BookedCar, Start, End);
         }
 
-        public bool DeleteBooking (Booking DeletableBooking, Hashtable Authorization)
+        public bool DeleteBooking (Booking DeletableBooking, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {

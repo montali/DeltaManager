@@ -3,31 +3,27 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using Delta.DeltaManager.UserNS;
+using DeltaManager.DBManagerServiceReference;
 
 namespace Delta.DeltaManager.Utils
 {
     class DataValidator
     {
-
-        public static void CheckAuthorization(Hashtable Authorization) // TODO: Verify ifs throwing exceptions here is ok. 
+        public DataValidator()
         {
-          /*  User CheckingUser = null;//DBManager.getUserFromEmail(Authorization["Email"]);
-            if (CheckingUser.PasswordHash != Authorization["Hash"])
-                throw new UserNotAuthorizedException(string.Format("User not authorized to do this."));*/
-
         }
 
-        public static bool CheckEmail(string Email)
+    public static bool CheckAuthorization(string Email, string MD5PassHash, DBManagerInterfaceClient DBManager) 
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                return true;
-            }
-            catch
-            {
+            User CheckingUser = DBManager.GetUserByEmail(Email);
+            Console.WriteLine("{0} - {1} - {2} - {3}",CheckingUser.Email, Email, CheckingUser.PasswordHash, MD5PassHash);
+            if (CheckingUser.PasswordHash != MD5PassHash)
                 return false;
-            }
+            else
+                return true;
+
         }
+
+
     }
 }

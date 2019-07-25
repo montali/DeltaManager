@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
 
 namespace Delta.DeltaManager.UserNS
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
         private DBManagerInterfaceClient DBManager;
         public UserManager()
@@ -14,41 +15,47 @@ namespace Delta.DeltaManager.UserNS
             this.DBManager = new DBManagerInterfaceClient();
         }
 
-        public bool LoginChecker(Hashtable Authorization)
+        public bool LoginChecker(string Email, string MD5PassHash)
         {
-            User LoggedUser=null;
-            //loggedUser= --> QUERY A DB PER USER
-            if (LoggedUser != null)
-                return true;
-            else
-                return false;
+            return DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
         }
 
-        public bool IsAdmin(Hashtable Authorization)
+        public bool IsAdmin(string Email, string MD5PassHash)
         {
-            User loggedUser = null;//DBManager.GetCurrentUserFromDB(Authorization);
+            User loggedUser = null;//DBManager.GetCurrentUserFromDB(Email, MD5PassHash);
             //if (User.IsAdmin())
               //  return true;
             //else
                 return false;
         }
 
-        public bool CreateUser(string Name, string Email, string PassHash,bool isAdmin)
+        public bool CreateUser(string Name, string Email, string PassHash,bool isAdmin, DateTime? LicenseExpiration = null, int LicensePoints=20)
         {
             User NewUser = new User();
             NewUser.Name = Name;
             NewUser.Email = Email;
             NewUser.PasswordHash = PassHash;
             NewUser.isAdmin = isAdmin;
-            
-            return DBManager.AddUser(NewUser);
+            if (LicenseExpiration == null)
+                NewUser.LicenseExpiration = new DateTime(1900, 1, 1);
+            else
+                NewUser.LicenseExpiration = (DateTime) LicenseExpiration;
+
+            try
+            {
+                return DBManager.AddUser(NewUser);
+            }catch (FaultException<DatabaseFault> fault)
+            {
+                Console.WriteLine(fault.ToString());
+                return false;
+            }
         }
 
-        public bool DeleteUser(User DeletableUser, Hashtable Authorization)
+        public bool DeleteUser(User DeletableUser, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -57,11 +64,11 @@ namespace Delta.DeltaManager.UserNS
            return true;// return DBManager.DeleteUser(User.email);
         }
 
-        public bool UpdateUser(User UpdatableUser, Hashtable Authorization)
+        public bool UpdateUser(User UpdatableUser, string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
@@ -70,11 +77,11 @@ namespace Delta.DeltaManager.UserNS
            return true;// return DBManager.UpdateUser(UpdatableUser);
         }
 
-        public List<User> GetUsers(Hashtable Authorization)
+        public List<User> GetUsers(string Email, string MD5PassHash)
         {
             try
             {
-                DataValidator.CheckAuthorization(Authorization);
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
             }
             catch (UserNotAuthorizedException e)
             {
