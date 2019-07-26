@@ -101,10 +101,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCarByPlate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Plate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCarByPlateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="GetCarByPlateResult" nillable="true" type="q9:Car" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeleteCar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q9:Car" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q10:Car" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -123,14 +137,14 @@
   <xs:element name="GetCarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="GetCarsResult" nillable="true" type="q10:ArrayOfCar" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="GetCarsResult" nillable="true" type="q11:ArrayOfCar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateCar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="updatableCar" nillable="true" type="q11:Car" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="updatableCar" nillable="true" type="q12:Car" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,14 +166,14 @@
   <xs:element name="GetAvailableCarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="GetAvailableCarsResult" nillable="true" type="q12:ArrayOfCar" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="GetAvailableCarsResult" nillable="true" type="q13:ArrayOfCar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddReport">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="report" nillable="true" type="q13:Report" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="report" nillable="true" type="q14:Report" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -173,7 +187,7 @@
   <xs:element name="DeleteReport">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="report" nillable="true" type="q14:Report" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="report" nillable="true" type="q15:Report" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -194,21 +208,21 @@
   <xs:element name="GetReportByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportByIDResult" nillable="true" type="q15:Report" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportByIDResult" nillable="true" type="q16:Report" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetReportsForCar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q16:Car" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q17:Car" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetReportsForCarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportsForCarResult" nillable="true" type="q17:ArrayOfReport" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportsForCarResult" nillable="true" type="q18:ArrayOfReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,14 +236,14 @@
   <xs:element name="GetUserByEmailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="GetUserByEmailResult" nillable="true" type="q18:User" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="GetUserByEmailResult" nillable="true" type="q19:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="user" nillable="true" type="q19:User" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="user" nillable="true" type="q20:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -243,7 +257,7 @@
   <xs:element name="DeleteUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="user" nillable="true" type="q20:User" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="user" nillable="true" type="q21:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -251,6 +265,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="DeleteUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="updatableUser" nillable="true" type="q22:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -262,14 +290,14 @@
   <xs:element name="GetUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="GetUsersResult" nillable="true" type="q21:ArrayOfUser" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.UserNS" minOccurs="0" name="GetUsersResult" nillable="true" type="q23:ArrayOfUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddService">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q22:Service" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q24:Service" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -283,7 +311,7 @@
   <xs:element name="DeleteService">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q23:Service" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q25:Service" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -297,7 +325,7 @@
   <xs:element name="UpdateService">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q24:Service" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="service" nillable="true" type="q26:Service" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -311,14 +339,14 @@
   <xs:element name="GetServicesForCar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q25:Car" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q27:Car" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetServicesForCarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="GetServicesForCarResult" nillable="true" type="q26:ArrayOfService" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ServiceNS" minOccurs="0" name="GetServicesForCarResult" nillable="true" type="q28:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

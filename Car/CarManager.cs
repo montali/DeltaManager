@@ -27,6 +27,20 @@ namespace Delta.DeltaManager.CarNS {
             return this.DBManager.AddCar(car);
         }
 
+        public Car GetCarByPlate (string Plate, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            return this.DBManager.GetCarByPlate(Plate);
+
+        }
+
         public bool DeleteCar(Car car, string Email, string MD5PassHash)
         {
             try

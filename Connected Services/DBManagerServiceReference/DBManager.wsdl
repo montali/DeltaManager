@@ -88,6 +88,18 @@
         <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetCarByPlate">
+      <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetCarByPlate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="DeleteCar">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteCar" style="document" />
       <wsdl:input>
@@ -207,6 +219,18 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteUser">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/UpdateUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

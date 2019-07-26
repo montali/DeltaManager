@@ -22,10 +22,10 @@ namespace Delta.DeltaManager.UserNS
 
         public bool IsAdmin(string Email, string MD5PassHash)
         {
-            User loggedUser = null;//DBManager.GetCurrentUserFromDB(Email, MD5PassHash);
-            //if (User.IsAdmin())
-              //  return true;
-            //else
+            Console.WriteLine(DBManager.GetUserByEmail(Email).isAdmin);
+            if (DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager))
+                return DBManager.GetUserByEmail(Email).isAdmin;
+            else
                 return false;
         }
 
@@ -74,7 +74,7 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
-           return true;// return DBManager.UpdateUser(UpdatableUser);
+           return DBManager.UpdateUser(UpdatableUser);
         }
 
         public List<User> GetUsers(string Email, string MD5PassHash)

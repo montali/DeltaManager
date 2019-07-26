@@ -667,6 +667,10 @@ namespace DeltaManager.DBManagerServiceReference {
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddCar(DeltaManager.DBManagerServiceReference.Car car);
         
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetCarByPlate", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetCarByPlateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetCarByPlateDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        DeltaManager.DBManagerServiceReference.Car GetCarByPlate(string Plate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteCarResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteCar(DeltaManager.DBManagerServiceReference.Car car);
@@ -709,6 +713,10 @@ namespace DeltaManager.DBManagerServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUser", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteUserDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool DeleteUser(DeltaManager.DBManagerServiceReference.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateUser", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateUserDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        bool UpdateUser(DeltaManager.DBManagerServiceReference.User updatableUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetUsers", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetUsersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
@@ -798,6 +806,10 @@ namespace DeltaManager.DBManagerServiceReference {
             return base.Channel.AddCar(car);
         }
         
+        public DeltaManager.DBManagerServiceReference.Car GetCarByPlate(string Plate) {
+            return base.Channel.GetCarByPlate(Plate);
+        }
+        
         public bool DeleteCar(DeltaManager.DBManagerServiceReference.Car car) {
             return base.Channel.DeleteCar(car);
         }
@@ -840,6 +852,10 @@ namespace DeltaManager.DBManagerServiceReference {
         
         public bool DeleteUser(DeltaManager.DBManagerServiceReference.User user) {
             return base.Channel.DeleteUser(user);
+        }
+        
+        public bool UpdateUser(DeltaManager.DBManagerServiceReference.User updatableUser) {
+            return base.Channel.UpdateUser(updatableUser);
         }
         
         public DeltaManager.DBManagerServiceReference.User[] GetUsers() {

@@ -18,6 +18,9 @@ namespace Delta.DeltaManager.CarNS
         bool DeleteCar(Car car, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
+        Car GetCarByPlate(string Plate, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
         List<Car> GetAvailableCars(DateTime Start, DateTime End, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
