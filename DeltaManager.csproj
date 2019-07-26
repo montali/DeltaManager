@@ -80,6 +80,9 @@
     <None Include="Connected Services\DBManagerServiceReference\DeltaManager.DBManagerServiceReference.Report.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\DBManagerServiceReference\DeltaManager.DBManagerServiceReference.Service.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\DBManagerServiceReference\DeltaManager.DBManagerServiceReference.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

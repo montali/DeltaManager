@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
@@ -25,7 +26,13 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return false;
             }
-           return true;// return DBManager.BookCar(BookedCar, Start, End);
+            Booking newBooking = new Booking();
+            newBooking.BookedCar = BookedCar;
+            newBooking.Start = Start;
+            newBooking.End = End;
+            newBooking.Booker = DBManager.GetUserByEmail(Email);
+            newBooking.ID = DBManager.GetMaxBooking() + 1;
+           return DBManager.BookCar(newBooking);
         }
 
         public bool DeleteBooking (Booking DeletableBooking, string Email, string MD5PassHash)
@@ -38,14 +45,40 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return false;
             }
-           return true;// return DBManager.DeleteBooking(DeletableBooking);
+           return DBManager.DeleteBooking(DeletableBooking);
         }
 
         public bool EndBooking (Booking EndedBooking, int NewKilometers, int Liters)
         {
             EndedBooking.BookedCar.Kilometers = NewKilometers;
             EndedBooking.BookedCar.BurnedLiters = Liters;
-           return true;// return DBManager.DeleteBooking(EndedBooking);
+            return DBManager.DeleteBooking(EndedBooking);
         }
+
+        public List<Booking> GetBookings (string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return new List<Booking>();
+            }
+            return new List<Booking>(DBManager.GetBookings());
+        }
+        public List<Booking> GetBookingsForCar(Car car, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return new List<Booking>();
+            }
+            return new List<Booking>(DBManager.GetBookingsForCar(car));
+        }
+
     }
 }

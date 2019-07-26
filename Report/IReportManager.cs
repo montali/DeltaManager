@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
@@ -10,9 +11,9 @@ namespace Delta.DeltaManager.ReportNS
     {
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        bool AddReport(Report report, string Email, string MD5PassHash);
+        bool AddReport(string Message, string Subject, Booking ReportedBooking, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        ArrayList retrieveReportsForCar(Car car, string Email, string MD5PassHash);
+        List<Report> retrieveReportsForCar(Car car, string Email, string MD5PassHash);
     }
 }

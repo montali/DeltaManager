@@ -17,7 +17,7 @@ namespace Delta.DeltaManager.ServiceNS
         {
             DBManager = new DBManagerInterfaceClient();
         }
-        public bool addCarService(Service ServiceDone, string Email, string MD5PassHash)
+        public bool addCarService(int Kilometers, Car ServicedCar, int TotalSpent, string Email, string MD5PassHash)
         {
             try
             {
@@ -27,10 +27,15 @@ namespace Delta.DeltaManager.ServiceNS
             {
                 return false;
             }
-           return true;// return DBManager.addCarService(ServiceDone);
+            Service ServiceDone = new Service();
+            ServiceDone.ID = DBManager.GetMaxService();
+            ServiceDone.TotalSpent = TotalSpent;
+            ServiceDone.ServicedCar = ServicedCar;
+            ServiceDone.Kilometers = Kilometers;
+           return DBManager.AddService(ServiceDone);
         }
 
-        public ArrayList GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash)
+        public List<Service> GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash)
         {
             try
             {
@@ -40,7 +45,7 @@ namespace Delta.DeltaManager.ServiceNS
             {
                 return null;
             }
-           return null;// return DBManager.getCarServicesForCar(ServicedCar);
+           return new List <Service>(DBManager.GetServicesForCar(ServicedCar));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
@@ -10,9 +11,9 @@ namespace Delta.DeltaManager.ServiceNS
     {
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        bool addCarService(Service ServiceDone, string Email, string MD5PassHash);
+        bool addCarService(int Kilometers, Car ServicedCar, int TotalSpent, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        ArrayList GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash);
+        List<Service> GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash);
     }
 }

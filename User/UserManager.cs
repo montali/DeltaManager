@@ -89,6 +89,19 @@ namespace Delta.DeltaManager.UserNS
             }
            return new List<User> (DBManager.GetUsers());
         }
+
+        public User GetUserByEmail (string SearchedEmail, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            return DBManager.GetUserByEmail(SearchedEmail);
+        }
     }
 
 }

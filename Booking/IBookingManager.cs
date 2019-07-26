@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
@@ -18,5 +19,12 @@ namespace Delta.DeltaManager.BookingNS
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
         bool EndBooking(Booking EndedBooking, int NewKilometers, int Liters);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        List<Booking> GetBookings(string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        List<Booking> GetBookingsForCar(Car car, string Email, string MD5PassHash);
+
     }
 }
