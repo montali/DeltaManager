@@ -17,7 +17,7 @@ namespace Delta.DeltaManager.ServiceNS
         {
             DBManager = new DBManagerInterfaceClient();
         }
-        public bool addCarService(int Kilometers, Car ServicedCar, int TotalSpent, string Email, string MD5PassHash)
+        public bool addCarService(int Kilometers, Car ServicedCar, float TotalSpent, string Email, string MD5PassHash)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Delta.DeltaManager.ServiceNS
            return DBManager.AddService(ServiceDone);
         }
 
-        public List<Service> GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash)
+        public List<Service> GetCarServicesForCar(string Plate, string Email, string MD5PassHash)
         {
             try
             {
@@ -45,7 +45,50 @@ namespace Delta.DeltaManager.ServiceNS
             {
                 return null;
             }
-           return new List <Service>(DBManager.GetServicesForCar(ServicedCar));
+            var services = DBManager.GetServicesForCar(Plate);
+            if (services != null)
+                return new List<Service>(services);
+            else
+                return new List<Service>();
         }
+
+        public Service GetServiceByID(int ID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            return DBManager.GetServiceByID(ID);
+        }
+
+        public bool DeleteService (int ID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            return DBManager.DeleteService(ID);
+        }
+         public bool UpdateService(Service service, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            return DBManager.UpdateService(service);
+        }
+
     }
 }

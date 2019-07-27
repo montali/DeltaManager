@@ -31,6 +31,10 @@ namespace Delta.DeltaManager.UserNS
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
         User GetUserByEmail(string SearchedEmail, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        bool AddUser(User user, string Email, string MD5PassHash);
+
 
     }
 }

@@ -79,6 +79,31 @@ namespace Delta.DeltaManager.BookingNS
             }
             return new List<Booking>(DBManager.GetBookingsForCar(car));
         }
+        public List<Booking> GetBookingsForUser(string UserEmail, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return new List<Booking>();
+            }
+            return new List<Booking>(DBManager.GetBookingsForUser(UserEmail));
+        }
+        public Booking GetBookingByID (int ID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            return DBManager.GetBookingByID(ID);
+        }
+
 
     }
 }

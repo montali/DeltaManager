@@ -663,6 +663,10 @@ namespace DeltaManager.DBManagerServiceReference {
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingsForCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.Booking[] GetBookingsForCar(DeltaManager.DBManagerServiceReference.Car car);
         
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingsForUser", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetBookingsForUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetBookingsForUserDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        DeltaManager.DBManagerServiceReference.Booking[] GetBookingsForUser(string UserEmail);
+        
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddCarResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddCar(DeltaManager.DBManagerServiceReference.Car car);
@@ -722,13 +726,17 @@ namespace DeltaManager.DBManagerServiceReference {
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetUsersDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         DeltaManager.DBManagerServiceReference.User[] GetUsers();
         
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetServiceByID", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetServiceByIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetServiceByIDDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        DeltaManager.DBManagerServiceReference.Service GetServiceByID(int ID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/AddService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/AddServiceResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/AddServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
         bool AddService(DeltaManager.DBManagerServiceReference.Service service);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
-        bool DeleteService(DeltaManager.DBManagerServiceReference.Service service);
+        bool DeleteService(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateService", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateServiceDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
@@ -736,7 +744,7 @@ namespace DeltaManager.DBManagerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetServicesForCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetServicesForCarResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetServicesForCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
-        DeltaManager.DBManagerServiceReference.Service[] GetServicesForCar(DeltaManager.DBManagerServiceReference.Car car);
+        DeltaManager.DBManagerServiceReference.Service[] GetServicesForCar(string PlateNumber);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetMaxBooking", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetMaxBookingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetMaxBookingDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
@@ -802,6 +810,10 @@ namespace DeltaManager.DBManagerServiceReference {
             return base.Channel.GetBookingsForCar(car);
         }
         
+        public DeltaManager.DBManagerServiceReference.Booking[] GetBookingsForUser(string UserEmail) {
+            return base.Channel.GetBookingsForUser(UserEmail);
+        }
+        
         public bool AddCar(DeltaManager.DBManagerServiceReference.Car car) {
             return base.Channel.AddCar(car);
         }
@@ -862,20 +874,24 @@ namespace DeltaManager.DBManagerServiceReference {
             return base.Channel.GetUsers();
         }
         
+        public DeltaManager.DBManagerServiceReference.Service GetServiceByID(int ID) {
+            return base.Channel.GetServiceByID(ID);
+        }
+        
         public bool AddService(DeltaManager.DBManagerServiceReference.Service service) {
             return base.Channel.AddService(service);
         }
         
-        public bool DeleteService(DeltaManager.DBManagerServiceReference.Service service) {
-            return base.Channel.DeleteService(service);
+        public bool DeleteService(int ID) {
+            return base.Channel.DeleteService(ID);
         }
         
         public bool UpdateService(DeltaManager.DBManagerServiceReference.Service service) {
             return base.Channel.UpdateService(service);
         }
         
-        public DeltaManager.DBManagerServiceReference.Service[] GetServicesForCar(DeltaManager.DBManagerServiceReference.Car car) {
-            return base.Channel.GetServicesForCar(car);
+        public DeltaManager.DBManagerServiceReference.Service[] GetServicesForCar(string PlateNumber) {
+            return base.Channel.GetServicesForCar(PlateNumber);
         }
         
         public int GetMaxBooking() {

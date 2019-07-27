@@ -76,6 +76,18 @@
         <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetBookingsForUser">
+      <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetBookingsForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="AddCar">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/AddCar" style="document" />
       <wsdl:input>
@@ -243,6 +255,18 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DatabaseFaultFault">
+        <soap:fault use="literal" name="DatabaseFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByID">
+      <soap:operation soapAction="Delta.DeltaDBManager/DBManagerInterface/GetServiceByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

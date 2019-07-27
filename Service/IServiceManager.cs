@@ -11,9 +11,19 @@ namespace Delta.DeltaManager.ServiceNS
     {
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        bool addCarService(int Kilometers, Car ServicedCar, int TotalSpent, string Email, string MD5PassHash);
+        bool addCarService(int Kilometers, Car ServicedCar, float TotalSpent, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        List<Service> GetCarServicesForCar(Car ServicedCar, string Email, string MD5PassHash);
+        List<Service> GetCarServicesForCar(string Plate, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        bool DeleteService(int ID, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        Service GetServiceByID(int ID, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        bool UpdateService(Service service, string Email, string MD5PassHash);
+
     }
 }

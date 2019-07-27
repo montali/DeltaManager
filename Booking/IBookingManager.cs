@@ -25,6 +25,13 @@ namespace Delta.DeltaManager.BookingNS
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
         List<Booking> GetBookingsForCar(Car car, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        List<Booking> GetBookingsForUser(string UserEmail, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        Booking GetBookingByID(int ID, string Email, string MD5PassHash);
+
 
     }
 }

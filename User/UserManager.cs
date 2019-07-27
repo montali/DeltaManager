@@ -61,7 +61,7 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
-           return true;// return DBManager.DeleteUser(User.email);
+           return DBManager.DeleteUser(DeletableUser);
         }
 
         public bool UpdateUser(User UpdatableUser, string Email, string MD5PassHash)
@@ -101,6 +101,18 @@ namespace Delta.DeltaManager.UserNS
                 return null;
             }
             return DBManager.GetUserByEmail(SearchedEmail);
+        }
+        public bool AddUser (User user, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            return DBManager.AddUser(user);
         }
     }
 
