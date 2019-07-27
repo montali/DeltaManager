@@ -14,6 +14,20 @@ namespace Delta.DeltaManager.ReportNS
         bool AddReport(string Message, string Subject, Booking ReportedBooking, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        List<Report> retrieveReportsForCar(Car car, string Email, string MD5PassHash);
+        List<Report> getReportsForCar(string CarPlate, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        Report getReportByID(int ID, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        bool DeleteReport(int ID, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        List<Report> getReportsForBooking(int BookingID, string Email, string MD5PassHash);
+        [OperationContract]
+        [FaultContract(typeof(ManagerFault))]
+        bool UpdateReport(Report report, string Email, string MD5PassHash);
+
+
     }
 }

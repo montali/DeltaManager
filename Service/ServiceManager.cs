@@ -28,7 +28,7 @@ namespace Delta.DeltaManager.ServiceNS
                 return false;
             }
             Service ServiceDone = new Service();
-            ServiceDone.ID = DBManager.GetMaxService();
+            ServiceDone.ID = DBManager.GetMaxService()+1;
             ServiceDone.TotalSpent = TotalSpent;
             ServiceDone.ServicedCar = ServicedCar;
             ServiceDone.Kilometers = Kilometers;

@@ -201,7 +201,7 @@
   <xs:element name="DeleteReport">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="report" nillable="true" type="q16:Report" />
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,14 +222,42 @@
   <xs:element name="GetReportByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportByIDResult" nillable="true" type="q17:Report" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportByIDResult" nillable="true" type="q16:Report" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="UpdatableReport" nillable="true" type="q17:Report" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateReportResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportsForBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BookingID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportsForBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.ReportNS" minOccurs="0" name="GetReportsForBookingResult" nillable="true" type="q18:ArrayOfReport" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetReportsForCar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager.CarNS" minOccurs="0" name="car" nillable="true" type="q18:Car" />
+        <xs:element minOccurs="0" name="CarPlate" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

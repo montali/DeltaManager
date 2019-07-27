@@ -697,14 +697,22 @@ namespace DeltaManager.DBManagerServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReport", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/DeleteReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/DeleteReportDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
-        bool DeleteReport(DeltaManager.DBManagerServiceReference.Report report);
+        bool DeleteReport(int ID);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetReportByID", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetReportByIDResponse")]
         DeltaManager.DBManagerServiceReference.Report GetReportByID(int ID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/UpdateReport", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/UpdateReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/UpdateReportDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        bool UpdateReport(DeltaManager.DBManagerServiceReference.Report UpdatableReport);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForBooking", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetReportsForBookingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForBookingDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
+        DeltaManager.DBManagerServiceReference.Report[] GetReportsForBooking(int BookingID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCar", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetReportsForCarDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
-        DeltaManager.DBManagerServiceReference.Report[] GetReportsForCar(DeltaManager.DBManagerServiceReference.Car car);
+        DeltaManager.DBManagerServiceReference.Report[] GetReportsForCar(string CarPlate);
         
         [System.ServiceModel.OperationContractAttribute(Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmail", ReplyAction="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(DeltaManager.DBManagerServiceReference.DatabaseFault), Action="Delta.DeltaDBManager/DBManagerInterface/GetUserByEmailDatabaseFaultFault", Name="DatabaseFault", Namespace="http://schemas.datacontract.org/2004/07/Delta.DeltaDBManager")]
@@ -842,16 +850,24 @@ namespace DeltaManager.DBManagerServiceReference {
             return base.Channel.AddReport(report);
         }
         
-        public bool DeleteReport(DeltaManager.DBManagerServiceReference.Report report) {
-            return base.Channel.DeleteReport(report);
+        public bool DeleteReport(int ID) {
+            return base.Channel.DeleteReport(ID);
         }
         
         public DeltaManager.DBManagerServiceReference.Report GetReportByID(int ID) {
             return base.Channel.GetReportByID(ID);
         }
         
-        public DeltaManager.DBManagerServiceReference.Report[] GetReportsForCar(DeltaManager.DBManagerServiceReference.Car car) {
-            return base.Channel.GetReportsForCar(car);
+        public bool UpdateReport(DeltaManager.DBManagerServiceReference.Report UpdatableReport) {
+            return base.Channel.UpdateReport(UpdatableReport);
+        }
+        
+        public DeltaManager.DBManagerServiceReference.Report[] GetReportsForBooking(int BookingID) {
+            return base.Channel.GetReportsForBooking(BookingID);
+        }
+        
+        public DeltaManager.DBManagerServiceReference.Report[] GetReportsForCar(string CarPlate) {
+            return base.Channel.GetReportsForCar(CarPlate);
         }
         
         public DeltaManager.DBManagerServiceReference.User GetUserByEmail(string Email) {

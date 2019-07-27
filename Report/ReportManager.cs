@@ -35,7 +35,7 @@ namespace Delta.DeltaManager.ReportNS
            return DBManager.AddReport(report);
         }
 
-        public List<Report> retrieveReportsForCar (Car car, string Email, string MD5PassHash)
+        public List<Report> getReportsForCar (string CarPlate, string Email, string MD5PassHash)
         {
             try
             {
@@ -45,7 +45,61 @@ namespace Delta.DeltaManager.ReportNS
             {
                 return null;
             }
-           return new List<Report>(DBManager.GetReportsForCar(car));
+           return new List<Report>(DBManager.GetReportsForCar(CarPlate));
         }
+        public Report getReportByID(int ID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            return DBManager.GetReportByID(ID);
+        }
+        public bool DeleteReport(int ID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            return DBManager.DeleteReport(ID);
+        }
+        public List<Report> getReportsForBooking(int BookingID, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return null;
+            }
+            var reports = DBManager.GetReportsForBooking(BookingID);
+            if (reports != null)
+                return new List<Report>(reports);
+            else
+                return new List<Report>();
+        }
+
+        public bool UpdateReport(Report report, string Email, string MD5PassHash)
+        {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            return DBManager.UpdateReport(report);
+        }
+
     }
 }
