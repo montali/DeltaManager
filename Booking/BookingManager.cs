@@ -45,13 +45,32 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return false;
             }
+            var BookingReports = DBManager.GetReportsForBooking(DeletableBooking.ID);
+            foreach (var Report in BookingReports)
+            {
+                DBManager.DeleteReport(Report.ID);
+            }
            return DBManager.DeleteBooking(DeletableBooking);
         }
 
-        public bool EndBooking (Booking EndedBooking, int NewKilometers, int Liters)
+        public bool EndBooking (Booking EndedBooking, int NewKilometers, int Liters, string Email, string MD5PassHash)
         {
+            try
+            {
+                DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager);
+            }
+            catch (UserNotAuthorizedException e)
+            {
+                return false;
+            }
+            var BookingReports = DBManager.GetReportsForBooking(EndedBooking.ID);
+            foreach (var Report in BookingReports)
+            {
+                DBManager.DeleteReport(Report.ID);
+            }
             EndedBooking.BookedCar.Kilometers = NewKilometers;
-            EndedBooking.BookedCar.BurnedLiters = Liters;
+            EndedBooking.BookedCar.BurnedLiters += Liters;
+            DBManager.UpdateCar(EndedBooking.BookedCar);
             return DBManager.DeleteBooking(EndedBooking);
         }
 

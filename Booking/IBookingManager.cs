@@ -18,7 +18,7 @@ namespace Delta.DeltaManager.BookingNS
         bool DeleteBooking(Booking DeletableBooking, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
-        bool EndBooking(Booking EndedBooking, int NewKilometers, int Liters);
+        bool EndBooking(Booking EndedBooking, int NewKilometers, int Liters, string Email, string MD5PassHash);
         [OperationContract]
         [FaultContract(typeof(ManagerFault))]
         List<Booking> GetBookings(string Email, string MD5PassHash);

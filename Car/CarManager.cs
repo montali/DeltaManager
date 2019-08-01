@@ -51,6 +51,16 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return false;
             }
+            var CarBookings = DBManager.GetBookingsForCar(car);
+            foreach (var Booking in CarBookings)
+            {
+                DBManager.DeleteBooking(Booking);
+            }
+            var CarServices = DBManager.GetServicesForCar(car.PlateNumber);
+            foreach (var Service in CarServices)
+            {
+                DBManager.DeleteService(Service.ID);
+            }
            return DBManager.DeleteCar(car);
         }
 

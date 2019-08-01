@@ -61,6 +61,11 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
+            var UserBookings = DBManager.GetBookingsForUser(DeletableUser.Email);
+            foreach (var Booking in UserBookings)
+            {
+                DBManager.DeleteBooking(Booking);
+            }
            return DBManager.DeleteUser(DeletableUser);
         }
 
