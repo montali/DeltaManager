@@ -22,7 +22,6 @@ namespace Delta.DeltaManager.UserNS
 
         public bool IsAdmin(string Email, string MD5PassHash)
         {
-            Console.WriteLine(DBManager.GetUserByEmail(Email).isAdmin);
             if (DataValidator.CheckAuthorization(Email, MD5PassHash, this.DBManager))
                 return DBManager.GetUserByEmail(Email).isAdmin;
             else
@@ -40,15 +39,8 @@ namespace Delta.DeltaManager.UserNS
                 NewUser.LicenseExpiration = new DateTime(1900, 1, 1);
             else
                 NewUser.LicenseExpiration = (DateTime) LicenseExpiration;
-
-            try
-            {
                 return DBManager.AddUser(NewUser);
-            }catch (FaultException<DatabaseFault> fault)
-            {
-                Console.WriteLine(fault.ToString());
-                return false;
-            }
+
         }
 
         public bool DeleteUser(User DeletableUser, string Email, string MD5PassHash)
