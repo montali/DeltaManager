@@ -39,8 +39,14 @@ namespace Delta.DeltaManager.UserNS
                 NewUser.LicenseExpiration = new DateTime(1900, 1, 1);
             else
                 NewUser.LicenseExpiration = (DateTime) LicenseExpiration;
+            try
+            {
                 return DBManager.AddUser(NewUser);
-
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public bool DeleteUser(User DeletableUser, string Email, string MD5PassHash)
@@ -53,12 +59,19 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
-            var UserBookings = DBManager.GetBookingsForUser(DeletableUser.Email);
-            foreach (var Booking in UserBookings)
+            try
             {
-                DBManager.DeleteBooking(Booking);
+                var UserBookings = DBManager.GetBookingsForUser(DeletableUser.Email);
+                foreach (var Booking in UserBookings)
+                {
+                    DBManager.DeleteBooking(Booking);
+                }
+                return DBManager.DeleteUser(DeletableUser);
             }
-           return DBManager.DeleteUser(DeletableUser);
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public bool UpdateUser(User UpdatableUser, string Email, string MD5PassHash)
@@ -71,7 +84,14 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
-           return DBManager.UpdateUser(UpdatableUser);
+            try
+            {
+                return DBManager.UpdateUser(UpdatableUser);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public List<User> GetUsers(string Email, string MD5PassHash)
@@ -84,7 +104,14 @@ namespace Delta.DeltaManager.UserNS
             {
                 return null;
             }
-           return new List<User> (DBManager.GetUsers());
+            try
+            {
+                return new List<User>(DBManager.GetUsers());
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public User GetUserByEmail (string SearchedEmail, string Email, string MD5PassHash)
@@ -97,7 +124,14 @@ namespace Delta.DeltaManager.UserNS
             {
                 return null;
             }
-            return DBManager.GetUserByEmail(SearchedEmail);
+            try
+            {
+                return DBManager.GetUserByEmail(SearchedEmail);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
         public bool AddUser (User user, string Email, string MD5PassHash)
         {
@@ -109,7 +143,14 @@ namespace Delta.DeltaManager.UserNS
             {
                 return false;
             }
-            return DBManager.AddUser(user);
+            try
+            {
+                return DBManager.AddUser(user);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
     }
 

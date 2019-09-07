@@ -32,7 +32,13 @@ namespace Delta.DeltaManager.BookingNS
             newBooking.End = End;
             newBooking.Booker = DBManager.GetUserByEmail(Email);
             newBooking.ID = DBManager.GetMaxBooking() + 1;
-           return DBManager.BookCar(newBooking);
+            try
+            {
+                return DBManager.BookCar(newBooking);
+            } catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public bool DeleteBooking (Booking DeletableBooking, string Email, string MD5PassHash)
@@ -45,12 +51,19 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return false;
             }
-            var BookingReports = DBManager.GetReportsForBooking(DeletableBooking.ID);
-            foreach (var Report in BookingReports)
+            try
             {
-                DBManager.DeleteReport(Report.ID);
+                var BookingReports = DBManager.GetReportsForBooking(DeletableBooking.ID);
+                foreach (var Report in BookingReports)
+                {
+                    DBManager.DeleteReport(Report.ID);
+                }
+                return DBManager.DeleteBooking(DeletableBooking);
             }
-           return DBManager.DeleteBooking(DeletableBooking);
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public bool EndBooking (Booking EndedBooking, int NewKilometers, int Liters, string Email, string MD5PassHash)
@@ -63,6 +76,7 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return false;
             }
+            try { 
             var BookingReports = DBManager.GetReportsForBooking(EndedBooking.ID);
             foreach (var Report in BookingReports)
             {
@@ -72,6 +86,11 @@ namespace Delta.DeltaManager.BookingNS
             EndedBooking.BookedCar.BurnedLiters += Liters;
             DBManager.UpdateCar(EndedBooking.BookedCar);
             return DBManager.DeleteBooking(EndedBooking);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public List<Booking> GetBookings (string Email, string MD5PassHash)
@@ -84,7 +103,13 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return new List<Booking>();
             }
+            try { 
             return new List<Booking>(DBManager.GetBookings());
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
         public List<Booking> GetBookingsForCar(Car car, string Email, string MD5PassHash)
         {
@@ -96,7 +121,13 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return new List<Booking>();
             }
+            try { 
             return new List<Booking>(DBManager.GetBookingsForCar(car));
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
         public List<Booking> GetBookingsForUser(string UserEmail, string Email, string MD5PassHash)
         {
@@ -108,7 +139,13 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return new List<Booking>();
             }
+            try { 
             return new List<Booking>(DBManager.GetBookingsForUser(UserEmail));
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
         public Booking GetBookingByID (int ID, string Email, string MD5PassHash)
         {
@@ -120,7 +157,13 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return null;
             }
+            try { 
             return DBManager.GetBookingByID(ID);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
 

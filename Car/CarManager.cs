@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ServiceModel;
 using Delta.DeltaManager.Utils;
 using DeltaManager.DBManagerServiceReference;
 
@@ -37,7 +38,13 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return null;
             }
+            try { 
             return this.DBManager.GetCarByPlate(Plate);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
 
         }
 
@@ -51,6 +58,7 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return false;
             }
+            try { 
             var CarBookings = DBManager.GetBookingsForCar(car);
             foreach (var Booking in CarBookings)
             {
@@ -62,6 +70,11 @@ namespace Delta.DeltaManager.CarNS {
                 DBManager.DeleteService(Service.ID);
             }
            return DBManager.DeleteCar(car);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public List<Car> GetCars (string Email, string MD5PassHash)
@@ -74,7 +87,13 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return null;
             }
-           return new List<Car>(DBManager.GetCars());
+            try { 
+                return new List<Car>(DBManager.GetCars());
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public bool UpdateCar (Car UpdatableCar, string Email, string MD5PassHash)
@@ -87,7 +106,13 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return false;
             }
-           return DBManager.UpdateCar(UpdatableCar);
+            try { 
+                return DBManager.UpdateCar(UpdatableCar);
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
 
         public List<Car> GetAvailableCars(DateTime Start, DateTime End, string Email, string MD5PassHash)
@@ -100,7 +125,13 @@ namespace Delta.DeltaManager.CarNS {
             {
                 return null;
             }
-           return new List<Car>(DBManager.GetAvailableCars(Start, End));
+            try { 
+                return new List<Car>(DBManager.GetAvailableCars(Start, End));
+            }
+            catch (FaultException<DatabaseFault> df)
+            {
+                throw new FaultException<ManagerFault>(new ManagerFault(df.ToString()));
+            }
         }
     }
 }
