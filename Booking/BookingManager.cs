@@ -103,8 +103,8 @@ namespace Delta.DeltaManager.BookingNS
             {
                 return new List<Booking>();
             }
-            try { 
-            return new List<Booking>(DBManager.GetBookings());
+            try {
+                return new List<Booking>(DBManager.GetBookings());
             }
             catch (FaultException<DatabaseFault> df)
             {
